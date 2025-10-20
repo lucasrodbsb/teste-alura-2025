@@ -10,12 +10,17 @@ import RelatedPosts from "@/presentation/components/RelatedPosts";
 import Spinner from "@/presentation/components/Spinner";
 import { usePost, usePosts, useRelatedPosts } from "@/services/posts/queries";
 import type { IDetailsProps } from "./types";
+import { redirect } from "next/navigation";
 
 const Details = ({ id }: IDetailsProps) => {
   const { data: posts } = usePosts({ page: 1, limit: 6 });
   const effectiveId = id === "1" ? (posts?.posts?.[0]?.id ?? id) : id;
-  const { data: post } = usePost(effectiveId);
+  const { data: post, isError } = usePost(effectiveId);
   const { data: relatedPosts } = useRelatedPosts(effectiveId);
+
+  if (isError) {
+    redirect("/");
+  }
 
   if (!post)
     return (
