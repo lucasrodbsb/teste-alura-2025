@@ -26,7 +26,7 @@ const Details = ({ id }: IDetailsProps) => {
 
   return (
     <section
-      className="px-4 md:px-6 gap-10 md:gap-18 flex flex-col bg-no-repeat bg-top bg-auto min-h-[80vh] justify-between"
+      className="px-4 md:px-6 gap-10 md:gap-18 flex flex-col bg-no-repeat bg-top bg-auto md:bg-contain min-h-[80vh] justify-between"
       style={{ backgroundImage: `url(${background.src})` }}
     >
       <div className="w-full ml-auto mr-auto max-w-[1191px] pt-12 md:pt-[72px] bg-no-repeat bg-top bg-auto gap-6 md:gap-10 flex flex-col flex-1">

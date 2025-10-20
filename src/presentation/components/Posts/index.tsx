@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTheme } from "next-themes";
 import { useMemo } from "react";
 import { cn } from "@/lib/cn";
 import searchIcon from "@/presentation/assets/icons/search.svg";
@@ -31,6 +32,8 @@ const Posts = ({
     return result;
   }, [posts]);
 
+  const { theme } = useTheme();
+
   const filteredPosts = useMemo(() => {
     const term = (searchText ?? "").trim().toLowerCase();
     if (!term) return posts ?? [];
@@ -54,6 +57,27 @@ const Posts = ({
       return inTitle || inContent || inAuthor || inCategory || inTags;
     });
   }, [posts, searchText]);
+
+  const buttonClasses = (page: number) => {
+    const base =
+      "text-nowrap text-sm md:text-base font-alt font-bold line-height-[100%] cursor-pointer w-7 h-7 md:w-8 md:h-8 rounded-sm transition-all duration-300";
+
+    if (theme === "dark") {
+      if (currentPage === page)
+        return cn(
+          base,
+          "bg-secondary hover:bg-secondary text-primary hover:text-primary",
+        );
+      return cn(
+        base,
+        "bg-primary hover:bg-secondary text-white hover:text-primary",
+      );
+    }
+
+    if (currentPage === page)
+      return cn(base, "bg-secondary hover:bg-secondary text-white");
+    return cn(base, "bg-text hover:bg-secondary text-white");
+  };
 
   return (
     <div className="max-w-[1191px] ml-auto mr-auto gap-6 flex flex-col w-full">
@@ -112,7 +136,7 @@ const Posts = ({
                   </button>
                 )}
               </div>
-              <div className="pointer-events-none absolute right-0 top-0 h-full w-6 bg-[linear-gradient(to_left,var(--color-white),rgba(255,255,255,0))]" />
+              <div className="pointer-events-none absolute right-0 top-0 h-full w-6 bg-[linear-gradient(to_left,var(--background),transparent)]" />
             </div>
           </div>
         </div>
@@ -136,12 +160,7 @@ const Posts = ({
             (page) => (
               <button
                 key={page}
-                className={cn(
-                  "text-nowrap text-sm md:text-base font-alt font-bold line-height-[100%] cursor-pointer w-7 h-7 md:w-8 md:h-8 rounded-sm",
-                  page === currentPage
-                    ? "bg-secondary text-white"
-                    : "bg-[#9D9D9D] text-white hover:bg-secondary hover:text-white",
-                )}
+                className={buttonClasses(page)}
                 type="button"
                 onClick={() => onPageChange?.(page)}
               >

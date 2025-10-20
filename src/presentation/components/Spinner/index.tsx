@@ -1,11 +1,7 @@
 import { cn } from "@/lib/cn";
+import type { ISpinnerProps } from "./types";
 
-type SpinnerProps = {
-  className?: string;
-  size?: number;
-};
-
-const Spinner = ({ className, size = 96 }: SpinnerProps) => {
+const Spinner = ({ className, size = 96 }: ISpinnerProps) => {
   return (
     <div className={cn("flex items-center justify-center", className)}>
       <div
@@ -16,7 +12,7 @@ const Spinner = ({ className, size = 96 }: SpinnerProps) => {
         <span className="absolute inset-0 rounded-full bg-[conic-gradient(var(--color-primary),_#8c61d5)] blur-[5px]" />
         <span className="absolute inset-0 rounded-full bg-[conic-gradient(var(--color-primary),_#8c61d5)] blur-[18px]" />
         <span className="absolute inset-0 rounded-full bg-[conic-gradient(var(--color-primary),_#8c61d5)] blur-[25px]" />
-        <span className="absolute inset-[10px] rounded-full border-[5px] border-[var(--color-white)] bg-[var(--color-white)]" />
+        <span className="absolute inset-[10px] rounded-full border-[5px] border-[var(--color-background)] bg-[var(--color-background)]" />
       </div>
     </div>
   );

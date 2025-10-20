@@ -6,10 +6,12 @@
   --color-text: rgba(110, 133, 159, 1);
   --color-white: #ffffff;
 
-  --font-primary: "Chakra Petch", system-ui, -apple-system, Segoe UI, Roboto,
-    Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-secondary: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
-    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-primary:
+    "Chakra Petch", system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-secondary:
+    "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
 
   --shadow-primary: 0px 4px 44px 0px rgba(28, 167, 200, 0.3);
 
@@ -17,6 +19,13 @@
 
   --background: var(--color-white);
   --foreground: var(--color-secondary);
+}
+
+.dark {
+  --background: #0b1220;
+  --foreground: #ffffff;
+  --color-text: rgba(203, 213, 225, 1);
+  --color-secondary: rgba(226, 232, 240, 1);
 }
 
 @theme inline {

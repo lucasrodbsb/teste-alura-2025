@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 import logo from "@/presentation/assets/code.svg";
+import ThemeToggle from "../ThemeToggle";
 import { ACTUAL_PAGE_ENUM, type IHeaderProps } from "./types";
 
 const Header = ({ actualPage = ACTUAL_PAGE_ENUM.HOME }: IHeaderProps) => {
@@ -14,6 +15,7 @@ const Header = ({ actualPage = ACTUAL_PAGE_ENUM.HOME }: IHeaderProps) => {
         </h1>
       </div>
       <div className="flex items-center gap-4 md:gap-5">
+        <ThemeToggle />
         <h1
           className={cn(
             "text-xl md:text-2xl font-bold text-secondary cursor-pointer hover:text-primary transition-all duration-300",

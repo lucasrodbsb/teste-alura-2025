@@ -5,12 +5,12 @@ type FetchOptions = RequestInit & { timeoutMs?: number };
 
 export async function fetchJson<T>(
   path: string,
-  options: FetchOptions = {}
+  options: FetchOptions = {},
 ): Promise<T> {
   const controller = new AbortController();
   const timeout = setTimeout(
     () => controller.abort(),
-    options.timeoutMs ?? 12_000
+    options.timeoutMs ?? 12_000,
   );
 
   try {
